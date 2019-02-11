@@ -1,6 +1,6 @@
 class Competition {
 
-    constructor(name, description, location, date) {
+    constructor(name, location, date) {
         this.id = 0;
         this.name = name;
         this.location = location;
@@ -10,7 +10,7 @@ class Competition {
     getAddSQL() {
         let { name, location, date } = this;
         let sql = `INSERT INTO COMPETITIONS (name, location, date) 
-                       VALUES('${name}','${description}','${location}', '${date}')`;
+                       VALUES('${name}','${location}', '${date}')`;
         return sql;
     }
 

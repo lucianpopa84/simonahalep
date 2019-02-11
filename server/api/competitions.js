@@ -21,7 +21,7 @@ router.get("/", (req, res, next) => {
 
 //handles (post) - add record
 router.post("/", VerifyToken, (req, res, next) => {
-    let competition = new Competition(req.body.title, req.body.description, req.body.location);
+    let competition = new Competition(req.body.name, req.body.location, req.body.date);
     db.query(competition.getAddSQL(), (err, data) => {
         console.log(err);
         res.status(200).json({
