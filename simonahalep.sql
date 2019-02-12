@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gazdă: 127.0.0.1
--- Timp de generare: feb. 11, 2019 la 05:22 PM
+-- Timp de generare: feb. 12, 2019 la 05:36 PM
 -- Versiune server: 10.1.37-MariaDB
 -- Versiune PHP: 5.6.39
 
@@ -74,7 +74,30 @@ CREATE TABLE `competitions` (
 --
 
 INSERT INTO `competitions` (`id`, `date`, `name`, `location`) VALUES
-(2, '2019-06-01', 'Craiova', 'craiova, romania');
+(2, '2019-06-01', 'Craiova', 'craiova, romania'),
+(3, '2019-06-05', 'undefined', 'craiova, romania'),
+(4, '2019-06-10', 'Craiova', 'craiova, romania');
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `nickname` varchar(50) NOT NULL,
+  `picture` varchar(255) NOT NULL,
+  `sub` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Eliminarea datelor din tabel `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `nickname`, `picture`, `sub`) VALUES
+(4, 'mugur serban', 'mugur3', 'picttt', 'google-oauth2|106682227812133893636');
 
 --
 -- Indexuri pentru tabele eliminate
@@ -100,6 +123,13 @@ ALTER TABLE `competitions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexuri pentru tabele `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `sub` (`sub`);
+
+--
 -- AUTO_INCREMENT pentru tabele eliminate
 --
 
@@ -119,7 +149,13 @@ ALTER TABLE `biografy`
 -- AUTO_INCREMENT pentru tabele `competitions`
 --
 ALTER TABLE `competitions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pentru tabele `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
