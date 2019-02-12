@@ -4,14 +4,17 @@ var bodyparser = require("body-parser");
 var cors = require("cors");
 
 var competitions = require("./api/competitions");
-var auth = require("./api/AuthController");
+var auth = require("./api/adminUsers");
+var users = require("./api/users");
 const app = express();
 
 app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use("/competitions", competitions);
-app.use("/auth", auth);
+app.use("/adminusers", auth);
+app.use("/users", users);
+
 
 
 //if we are here then the specified request is not found

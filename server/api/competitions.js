@@ -20,7 +20,7 @@ router.get("/", (req, res, next) => {
 });
 
 //handles (post) - add record
-router.post("/", VerifyToken, (req, res, next) => {
+router.post("/", VerifyToken('admin'), (req, res, next) => {
     let competition = new Competition(req.body.name, req.body.location, req.body.date);
     db.query(competition.getAddSQL(), (err, data) => {
         console.log(err);
@@ -51,7 +51,7 @@ router.get("/:Id", (req, res, next) => {
 });
 
 //handle (delete) - remove
-router.delete("/:id", VerifyToken, (req, res, next) => {
+router.delete("/:id", VerifyToken('admin'), (req, res, next) => {
     var id = req.params.id;
     console.log('delete request');
     db.query(Competition.deleteByIdSQL(id), (err, data) => {
@@ -71,7 +71,7 @@ router.delete("/:id", VerifyToken, (req, res, next) => {
 });
 
 //handles (put) - update
-router.put("/", VerifyToken, (req, res, next) => {
+router.put("/", VerifyToken('admin'), (req, res, next) => {
     var id = req.body.id;
     console.log('update route:', req.body);
     var q = Competition.updateByDataSQL(req.body);

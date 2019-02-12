@@ -13,7 +13,7 @@ router.post('/register', function (req, res) {
     let adminUser = new AdminUser(req.body.username, hashedPassword);
     db.query(adminUser.getAddSQL(), (err, data) => {
         if (err) return res.status(500).send("There was a problem registering the user.")
-        var token = jwt.sign({ id: data.insertId }, config.secret, { expiresIn: 86400 });// expires in 24 hours
+        var token = jwt.sign({ id: data.insertId, type: 'admin' }, config.secret, { expiresIn: 86400 });// expires in 24 hours
         res.status(200).json({
             message: "AdminUser added.",
             auth: true,
@@ -25,7 +25,7 @@ router.post('/register', function (req, res) {
 
 var VerifyToken = require('./verifyToken');
 
-router.get('/me', VerifyToken, function (req, res) {
+router.get('/me', VerifyToken('admin'), function (req, res) {
     var token = req.headers['x-access-token'];
     if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
 
@@ -45,7 +45,7 @@ router.post('/login', function (req, res) {
         if (!user) return res.status(404).send('No user found.');
         var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
         if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
-        var token = jwt.sign({ id: user.id }, config.secret, {
+        var token = jwt.sign({ id: user.id, type: 'admin' }, config.secret, {
             expiresIn: 86400 // expires in 24 hours
         });
         res.status(200).send({ auth: true, token: token });
