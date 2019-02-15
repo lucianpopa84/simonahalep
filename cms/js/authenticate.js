@@ -44,7 +44,7 @@ export default class Authenticate {
               <div class="md-form mb-5">
                 <i class="fas fa-envelope prefix grey-text"></i>
                 <input type="text" name="username" id="username" class="form-control validate">
-                <label data-error="wrong" data-success="right" for="username">Your email</label>
+                <label data-error="wrong" data-success="right" for="username">Your username</label>
               </div>
               <div class="md-form mb-4">
                 <i class="fas fa-lock prefix grey-text"></i>

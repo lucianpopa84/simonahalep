@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gazdă: 127.0.0.1
--- Timp de generare: feb. 12, 2019 la 05:36 PM
+-- Timp de generare: feb. 15, 2019 la 03:05 PM
 -- Versiune server: 10.1.37-MariaDB
 -- Versiune PHP: 5.6.39
 
@@ -40,21 +40,36 @@ CREATE TABLE `adminusers` (
 --
 
 INSERT INTO `adminusers` (`id`, `username`, `password`, `validated`) VALUES
-(2, 'mugur', '$2a$08$eoYk0w8rfwLAf.9eOzlbXOMTsSpLJoK2JRl4/1bE4IW6D4CygAngS', 0),
-(3, 'mugur2', '$2a$08$82FIYSQn6g0KINGd4BU0euQa9QknA8F9/8tLBWobUL3wCT1uVcDo6', 1);
+(4, 'mugur', '$2a$08$FHcEfftOXUkRsUkQrZNTWOSYVm/6aEhUtsDA43/aeButoQYabDaA2', 1),
+(3, 'mugur2', '$2a$08$82FIYSQn6g0KINGd4BU0euQa9QknA8F9/8tLBWobUL3wCT1uVcDo6', 1),
+(5, 'lucian', '$2a$08$7Wqf5v41jkJfEEmhyT5UEOjA9OS6S1RwmJ7p4j5iPEYYW55tuKzQK', 1),
+(6, 'madalina', '$2a$08$v1nDsi16MMHyGSQSd96fWeO0Ocwa3renvSTjh9nZ.Bq0cICe4oRvO', 1),
+(7, 'sergiu', '$2a$08$WRxVHbEoSU0ppILbFsmFdOyynNQLFBZcMAdj91t3TkF/ngrkYJmVi', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `biografy`
+-- Structură tabel pentru tabel `biography`
 --
 
-CREATE TABLE `biografy` (
+CREATE TABLE `biography` (
   `id` int(11) NOT NULL,
+  `status` enum('visible','not visible') NOT NULL DEFAULT 'not visible',
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `time` date NOT NULL
+  `date` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Eliminarea datelor din tabel `biography`
+--
+
+INSERT INTO `biography` (`id`, `status`, `title`, `description`, `date`) VALUES
+(1, 'visible', 'Simona was born', 'Simona was born in Pitesti, Arges', '2019-02-20'),
+(3, 'visible', 'Simona was one month old...  ', 'Simona celebrate one month', '1998-07-16'),
+(20, 'not visible', 'dasdas', 'dasdasd', '2018-11-12'),
+(18, 'not visible', 'asddas', 'asdasdasd', '2019-02-27'),
+(19, 'visible', 'dasdasd', 'dasdasdasd', '2018-12-19');
 
 -- --------------------------------------------------------
 
@@ -111,9 +126,9 @@ ALTER TABLE `adminusers`
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexuri pentru tabele `biografy`
+-- Indexuri pentru tabele `biography`
 --
-ALTER TABLE `biografy`
+ALTER TABLE `biography`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -137,13 +152,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pentru tabele `adminusers`
 --
 ALTER TABLE `adminusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT pentru tabele `biografy`
+-- AUTO_INCREMENT pentru tabele `biography`
 --
-ALTER TABLE `biografy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `biography`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT pentru tabele `competitions`
