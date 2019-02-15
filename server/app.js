@@ -6,6 +6,7 @@ var cors = require("cors");
 var competitions = require("./api/competitions");
 var auth = require("./api/adminUsers");
 var users = require("./api/users");
+var biographies = require("./api/biographies");
 const app = express();
 
 app.use(cors());
@@ -14,6 +15,7 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.use("/competitions", competitions);
 app.use("/adminusers", auth);
 app.use("/users", users);
+app.use("/biography", biographies);
 
 
 

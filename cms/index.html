@@ -1,2 +1,81 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="kendo/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="kendo/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="kendo/styles/kendo.default.mobile.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <img width="150" id='logo' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLuGiCTqGxkZnOiwO-Fzupeqq5Fp5n_4eCLpkiIO8vstVziTbRtA">
+            </div>
+            <div class="col-sm-10">
+
+                <div class="row">
+                    <div class="col-sm-3 d-flex border mx-auto justify-content-center align-items-center font-weight-bold text-center">
+                        146<br>TOURNAMENTS PLAYED
+                    </div>
+                    <div class="col-sm-3 d-flex border mx-auto justify-content-center align-items-center font-weight-bold text-center">
+                        2136<br>WINS
+                    </div>
+                    <div class="col-sm-3 d-flex border mx-auto justify-content-center align-items-center font-weight-bold text-center">
+                        47<br>TROPHIES
+                    </div>
+                    <div class="col-sm-3 d-flex  border" style="height:150px;">
+                        <div class="row mx-auto d-flex justify-content-center align-items-center font-weight-bold text-center">
+                            <div class="col-sm-6 pr-0" id="authenticate">
+                                HI ADMIN
+                            </div>
+                            <div class="col-sm-6 pl-0">
+                                <img height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVqakdfTj_2teEFjlcCP-z2AHCalIVKTswALKwXbHija2LAU18">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row d-none" id="logedInSection">
+            <div class="col-sm-2">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link" id="biography-tab" data-toggle="pill" href="#v-pills-biography" role="tab"
+                        aria-controls="v-pills-home" aria-selected="true">BIOGRAPHY</a>
+                    <a class="nav-link" id="career-tab" data-toggle="pill" href="#v-pills-career" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false">CAREER STATISTICS</a>
+                    <a class="nav-link" id="events-tab" data-toggle="pill" href="#v-pills-events" role="tab"
+                        aria-controls="v-pills-messages" aria-selected="false">EVENTS</a>
+                    <a class="nav-link" id="users-tab" data-toggle="pill" href="#v-pills-users" role="tab"
+                        aria-controls="v-pills-settings" aria-selected="false">USERS</a>
+                </div>
+            </div>
+            <div class="col-sm-10" id="main-container">
+            </div>
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="module" src="app.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+
+
+</body>
+
 </html>

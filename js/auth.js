@@ -52,7 +52,7 @@ export default class Auth {
                             'x-access-token': this.localToken
                         }
                     });
-                    router.navigate("/students");
+                    router.navigate("/");
                 },
                 error: function (err) {
                     console.log(err);

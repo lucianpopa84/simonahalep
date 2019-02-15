@@ -48,7 +48,7 @@ router.post('/login', function (req, res) {
         var token = jwt.sign({ id: user.id, type: 'admin' }, config.secret, {
             expiresIn: 86400 // expires in 24 hours
         });
-        res.status(200).send({ auth: true, token: token });
+        res.status(200).send({ auth: true, token: token, username: user.username });
     });
 });
 
