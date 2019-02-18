@@ -20,6 +20,7 @@ export default class Auth {
         }
     }
     localLogin(authResult) {
+        console.log("local login");
         localStorage.setItem('isLoggedIn', 'true');
         // Set the time that the access token will expire at
         this.expiresAt = JSON.stringify(
@@ -63,15 +64,19 @@ export default class Auth {
     }
     handleAuthentication() {
         this.webAuth.parseHash((err, authResult) => {
-            console.log("handle autentification");
+            console.log("handle autentification here", err, authResult);
             if (authResult && authResult.accessToken && authResult.idToken) {
+                console.log('caz1');
                 window.location.hash = '';
                 this.localLogin(authResult);
             } else if (err) {
+                console.log('caz2');
                 console.log(err);
                 alert(
                     'Error: ' + err.error + '. Check the console for further details.'
                 );
+            } else {
+                console.log('caz3');
             }
             //displayButtons();
         });
@@ -101,7 +106,7 @@ export default class Auth {
         this.idToken = '';
         this.expiresAt = 0;
         this.userProfile = null;
-        var button = $("<button style='display:inline-block; align-self: flex-start;'>Log in</button>");
+        var button = $(`<a class="nav-link" href="javascript: void(0)">Login</a>`);
         button.on('click', () => { this.webAuth.authorize(); });
         this.profileElement.empty();
         this.profileElement.append(button);
@@ -125,8 +130,9 @@ export default class Auth {
                     this.userProfile = profile;
                     console.log("picture", profile.picture);
                     console.log("name", profile.name);
-                    var img = `<div style="padding-left:20px;display:flex;  align-items: center;justify-content: center; align-self: flex-start;">Logged as: <img height='30' src="${profile.picture}">${profile.nickname}</div>`;
-                    var button = $("<button style='display:inline-block; align-self: flex-start;'>Log out</button>");
+                    var img = ` <li class="nav-item"><a class="nav-link" >Logged as: <img height='30' src="${profile.picture}">${profile.nickname}</a><li>`;
+
+                    var button = $(` <li class="nav-item"><a class="nav-link" href="javascript: void(0)">Logout</a></li>`);
                     button.on('click', () => { this.logout() });
                     this.profileElement.empty();
                     this.profileElement.append(button);

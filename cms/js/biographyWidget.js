@@ -86,7 +86,7 @@ export default class BiographyWidget extends Biography {
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description" name="description" rows="3 required">${description}</textarea>
+    <textarea class="form-control" id="description" name="description" rows="3" required>${description}</textarea>
   </div>
   <button type="submit" class="btn btn-primary">add/edit biography</button>
 </form>

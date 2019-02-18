@@ -50,15 +50,17 @@ export default class BiographyView {
                 width: 100
             }, {
                 template: function (dataItem) {
-                    let buttons = `<div class="d-flex align-items-center justify-content-center"><button id="editButton${dataItem.id}" class='btn btn-success btn-sm m-2' onclick="router.navigate('/biography/${dataItem.id}')">Edit</button>
-                                   <button id="deleteButton${dataItem.id}" class='btn btn-warning btn-sm m-2' onclick="if (confirm('siguri stergeti?')) {router.navigate('/biography/delete/${dataItem.id}');}">Delete</button></div>`;
+                    let buttons = `<div class="d-flex align-items-center justify-content-center">
+                                    <button id="editButton${dataItem.id}" class='btn btn-success btn-sm m-2' onclick="router.navigate('/biography/${dataItem.id}')">Edit</button>
+                                    <button id="deleteButton${dataItem.id}" class='btn btn-warning btn-sm m-2' onclick="if (confirm('siguri stergeti?')) {router.navigate('/biography/delete/${dataItem.id}');}">Delete</button>
+                                   </div>`;
                     return buttons;
                 },
                 width: 150
             }
             ]
         });
-        container.append(`<div class="mt-2"> <h1 class="d-inline-block">Biography</h1> <button id="addBiographyButton" class="btn btn-success float-right m-1">Add biography</button></div > `);
+        container.append(`<div class="mt-2"> <h1 class="d-inline-block">Biography</h1> <button id="addBiographyButton" class="btn btn-success float-right m-1"><span class='font-weight-bold'>+</span> Add biography</button></div > `);
         $("#addBiographyButton").on('click', () => { router.navigate('/biography/add') });
         container.append(grid);
     }
