@@ -1,18 +1,20 @@
 window.router = new kendo.Router();
 import Auth from './js/auth.js';
+import BiographyView from "./js/biographyView.js";
 
 $(document).ready(function () {
 
     router.route("/", function () {
         $("#navb a").removeClass("active");
         $("#sectionArea").empty();
-        $("#sectionArea").html(`<h1>INDEX PAGE</h1>`);
+        //$("#sectionArea").html(`<h1>INDEX PAGE</h1>`);
     });
 
     router.route("/biography", () => {
         $("#navb a").removeClass("active");
         $("#biography").addClass("active");
-        $("#sectionArea").html("<h1>Biography view</h1>");
+        let biographyView = new BiographyView();
+        biographyView.load($("#sectionArea"));
     });
 
     router.route("/careerStatistics", () => {

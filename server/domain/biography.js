@@ -33,7 +33,7 @@ class Biography {
     }
 
     static getAllSQL() {
-        let sql = `SELECT * FROM biography`;
+        let sql = `SELECT * FROM biography order by date`;
         return sql;
     }
 }

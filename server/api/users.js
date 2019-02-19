@@ -22,16 +22,16 @@ var VerifyToken = require('./verifyToken');
 
 const router = express.Router();
 
-function returnToken(res, userId) {
-    var token = jwt.sign({ id: userId, type: 'visitor' }, config.secret, {
+function returnToken(res, user) {
+    var token = jwt.sign({ id: user.id, type: 'visitor' }, config.secret, {
         expiresIn: 86400 // expires in 24 hours
     });
-    res.status(200).send({ auth: true, token: token, id: userId });
+    res.status(200).send({ auth: true, token: token, user: user });
 }
 
 //handles url http://localhost:6001/students/ (post)
 router.post("/", jwtCheck, (req, res, next) => {
-    sub = req.body.sub;
+    let sub = req.body.sub;
     let q = User.getBySubSQL(sub);
     console.log("query:", q);
     db.query(User.getBySubSQL(sub), (err, data) => {
@@ -42,7 +42,8 @@ router.post("/", jwtCheck, (req, res, next) => {
             let user = new User(req.body.sub, req.body.name, req.body.nickname, req.body.picture);
             db.query(user.getAddSQL(), (err, data) => {
                 console.log(err);
-                returnToken(res, data.insertId);
+                user.id = data.insertId;
+                returnToken(res, user);
             });
         }
     });

@@ -14,7 +14,19 @@ export default class Auth {
         this.userProfile = null;
         this.profileElement = profileElement;
         if (this.isAuthenticated()) {
-            this.renewTokens();
+            console.log('is auth');
+            if (localStorage.getItem('localToken')) {
+                this.localToken = localStorage.getItem('localToken');
+                this.userProfile = JSON.parse(localStorage.getItem('userProfile'));
+                $.ajaxSetup({
+                    headers: {
+                        'x-access-token': this.localToken
+                    }
+                });
+                this.showProfile();
+            } else {
+                this.renewTokens();
+            }
         } else {
             this.handleAuthentication();
         }
@@ -30,8 +42,6 @@ export default class Auth {
         this.idToken = authResult.idToken;
         console.log('apel getProfile...');
         this.getProfile();
-        console.log('apel getLocalToken...');
-        this.getLocalToken();
     }
     getLocalToken() {
         console.log('enter getLocalToken');
@@ -46,13 +56,15 @@ export default class Auth {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + this.accessToken);
                 },
                 success: function (data) {
-                    console.log(data);
+                    console.log("data returned:", data);
                     this.localToken = data.token;
                     $.ajaxSetup({
                         headers: {
                             'x-access-token': this.localToken
                         }
                     });
+                    localStorage.setItem('localToken', this.localToken);
+                    localStorage.setItem('userProfile', JSON.stringify(this.userProfile));
                     router.navigate("/");
                 },
                 error: function (err) {
@@ -82,6 +94,7 @@ export default class Auth {
         });
     }
     renewTokens() {
+        console.log("renew token");
         this.webAuth.checkSession({}, (err, authResult) => {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 this.localLogin(authResult);
@@ -101,6 +114,7 @@ export default class Auth {
 
         });
         localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('localToken');
         // Remove tokens and expiry time
         this.accessToken = '';
         this.idToken = '';
@@ -116,7 +130,25 @@ export default class Auth {
         // Access Token's expiry time
         console.log("check for autentification...");
         var expiration = parseInt(this.expiresAt) || 0;
-        return localStorage.getItem('isLoggedIn') === 'true' && new Date().getTime() < expiration;
+        console.log("is logged", localStorage.getItem('isLoggedIn'));
+        console.log("exp", expiration);
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            if (!expiration || (new Date().getTime() < expiration)) {
+                return true;
+            }
+        }
+        return false;
+        //return localStorage.getItem('isLoggedIn') === 'true' && expiration && new Date().getTime() < expiration;
+    }
+    showProfile() {
+        let profile = this.userProfile;
+        var img = ` <li class="nav-item"><a class="nav-link" >Logged as: <img height='30' src="${profile.picture}">${profile.nickname}</a><li>`;
+        var button = $(` <li class="nav-item"><a class="nav-link" href="javascript: void(0)">Logout</a></li>`);
+        button.on('click', () => { this.logout() });
+        this.profileElement.empty();
+        this.profileElement.append(button);
+        this.profileElement.append(img);
+        console.log("end showprofile");
     }
     getProfile() {
         if (!this.userProfile) {
@@ -125,19 +157,14 @@ export default class Auth {
             }
 
             this.webAuth.client.userInfo(this.accessToken, (err, profile) => {
-                console.log("incearca profile", profile);
                 if (profile) {
                     this.userProfile = profile;
                     console.log("picture", profile.picture);
                     console.log("name", profile.name);
-                    var img = ` <li class="nav-item"><a class="nav-link" >Logged as: <img height='30' src="${profile.picture}">${profile.nickname}</a><li>`;
-
-                    var button = $(` <li class="nav-item"><a class="nav-link" href="javascript: void(0)">Logout</a></li>`);
-                    button.on('click', () => { this.logout() });
-                    this.profileElement.empty();
-                    this.profileElement.append(button);
-                    this.profileElement.append(img);
+                    this.showProfile();
                     console.log("user profile:", this.userProfile);
+                    console.log('apel getLocalToken...');
+                    this.getLocalToken();
                 }
             });
         }
