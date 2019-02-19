@@ -18,12 +18,6 @@
     
 }
 
-blockquote {
-    padding: 10px 0 10px 20px;
-    position: relative;
-    border-left: 2px solid;
-    border-color: #999;
-}
 
 
 ul.timeline {
@@ -46,7 +40,7 @@ ul.timeline > li {
     cursor: pointer;
 }
 ul.timeline > li:before {
-    content: ' ';
+    content: '';
     background: white;
     display: inline-block;
     position: absolute;
