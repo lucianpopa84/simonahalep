@@ -26,10 +26,12 @@ function returnToken(res, user) {
     var token = jwt.sign({ id: user.id, type: 'visitor' }, config.secret, {
         expiresIn: 86400 // expires in 24 hours
     });
+    console.log("user id:", user.id);
+    console.log("loged with token:", token);
     res.status(200).send({ auth: true, token: token, user: user });
 }
 
-//handles url http://localhost:6001/students/ (post)
+//handles  (post)
 router.post("/", jwtCheck, (req, res, next) => {
     let sub = req.body.sub;
     let q = User.getBySubSQL(sub);
@@ -37,7 +39,7 @@ router.post("/", jwtCheck, (req, res, next) => {
     db.query(User.getBySubSQL(sub), (err, data) => {
         console.log(err, data);
         if (data[0]) {
-            returnToken(res, data[0].id);
+            returnToken(res, data[0]);
         } else {
             let user = new User(req.body.sub, req.body.name, req.body.nickname, req.body.picture);
             db.query(user.getAddSQL(), (err, data) => {

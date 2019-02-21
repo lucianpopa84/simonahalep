@@ -1,7 +1,7 @@
 export default class Authenticate {
     constructor(element) {
         this.element = element;
-        if (!localStorage.getItem('isLoggedIn')) {
+        if (!localStorage.getItem('isLoggedInAdmin')) {
             this.token = "";
             this.username = "";
             this.showLogin();
@@ -23,7 +23,7 @@ export default class Authenticate {
         });
         var event = new Event('userLoggedOut');
         window.dispatchEvent(event);
-        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('isLoggedInAdmin');
         localStorage.removeItem('localToken');
         localStorage.removeItem('username');
         this.showLogin();
@@ -80,7 +80,7 @@ export default class Authenticate {
         $('#loginButton').hide();
         var event = new Event('userLoggedIn');
         window.dispatchEvent(event);
-        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('isLoggedInAdmin', 'true');
         localStorage.setItem('localToken', this.token);
         localStorage.setItem('username', this.username);
         router.navigate("/biography");

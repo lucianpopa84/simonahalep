@@ -33,7 +33,7 @@ export default class Auth {
     }
     localLogin(authResult) {
         console.log("local login");
-        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('isLoggedInVisitor', 'true');
         // Set the time that the access token will expire at
         this.expiresAt = JSON.stringify(
             authResult.expiresIn * 1000 + new Date().getTime()
@@ -107,13 +107,13 @@ export default class Auth {
         });
     }
     logout() {
-        // Remove isLoggedIn flag from localStorage
+        // Remove isLoggedInVisitor flag from localStorage
         this.webAuth.logout({
             client_id: 'WaxdX_WWU0hICTU7Wal-QjYWDtiXRaAI',
             returnTo: 'http://localhost:5500/index.html'
 
         });
-        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('isLoggedInVisitor');
         localStorage.removeItem('localToken');
         // Remove tokens and expiry time
         this.accessToken = '';
@@ -130,24 +130,24 @@ export default class Auth {
         // Access Token's expiry time
         console.log("check for autentification...");
         var expiration = parseInt(this.expiresAt) || 0;
-        console.log("is logged", localStorage.getItem('isLoggedIn'));
+        console.log("is logged", localStorage.getItem('isLoggedInVisitor'));
         console.log("exp", expiration);
-        if (localStorage.getItem('isLoggedIn') === 'true') {
+        if (localStorage.getItem('isLoggedInVisitor') === 'true') {
             if (!expiration || (new Date().getTime() < expiration)) {
                 return true;
             }
         }
         return false;
-        //return localStorage.getItem('isLoggedIn') === 'true' && expiration && new Date().getTime() < expiration;
+        //return localStorage.getItem('isLoggedInVisitor') === 'true' && expiration && new Date().getTime() < expiration;
     }
     showProfile() {
         let profile = this.userProfile;
-        var img = ` <li class="nav-item"><a class="nav-link" >Logged as: <img height='30' src="${profile.picture}">${profile.nickname}</a><li>`;
-        var button = $(` <li class="nav-item"><a class="nav-link" href="javascript: void(0)">Logout</a></li>`);
-        button.on('click', () => { this.logout() });
+        let li = $(` <li class="nav-item"></li>`);
+        var a = $(`<a class="nav-link" href="javascript: void(0)">Logout <img height='30' src="${profile.picture}">${profile.nickname}</a>`);
+        a.on('click', () => { this.logout() });
+        a.appendTo(li);
         this.profileElement.empty();
-        this.profileElement.append(button);
-        this.profileElement.append(img);
+        this.profileElement.append(li);
         console.log("end showprofile");
     }
     getProfile() {

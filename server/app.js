@@ -7,6 +7,7 @@ var competitions = require("./api/competitions");
 var auth = require("./api/adminUsers");
 var users = require("./api/users");
 var biographies = require("./api/biographies");
+var comments = require("./api/comments");
 const app = express();
 
 app.use(cors());
@@ -16,8 +17,7 @@ app.use("/competitions", competitions);
 app.use("/adminusers", auth);
 app.use("/users", users);
 app.use("/biography", biographies);
-
-
+app.use("/comments", comments);
 
 //if we are here then the specified request is not found
 app.use((req, res, next) => {
