@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gazdă: 127.0.0.1
--- Timp de generare: feb. 19, 2019 la 04:16 PM
+-- Timp de generare: feb. 21, 2019 la 05:11 PM
 -- Versiune server: 10.1.38-MariaDB
 -- Versiune PHP: 7.3.2
 
@@ -67,9 +67,30 @@ CREATE TABLE `biography` (
 INSERT INTO `biography` (`id`, `status`, `title`, `description`, `date`) VALUES
 (1, 'visible', 'Copilărie', 'Simona Halep s-a născut pe 27 septembrie 1991 la Constanţa, într-o familie de aromâni. Ea a copilărit  într-o casă modestă, din Piaţa Chiliei, pe care părinţii ei, Stere şi Stania au cumpărat-o în anul 1990. Vacanţele şi le petrecea uneori la bunicii săi, din partea tatălui, la Stejaru, judeţul Tulcea. Bunica, pe care o cheamă tot Simona, Halep senior respectând tradiţia aromânilor şi punând copiilor numele prinţilor, îşi aminteşte cu mare drag de copilăria nepoţicii Simona: „O chemam la masă să mănânce, dar nu voia. Se mai certa cu verii ei mai mari, că se băga în joaca lor, dar tot nu se lăsa“. Bunicii Simonei s-au născut în Grecia, după care au ajuns în Bulgaria, de unde au fost deportaţi în localitatea Stejaru, din Tulcea. Acolo, părinţii lor au pus la cale căsătoria. S-au plăcut de cum s-au văzut. El avea 18 ani şi ea 19 atunci când s-au căsătorit în anul 1954. După trei ani a venit pe lume Zoiţa, apoi Cheraţa. Au urmat apoi doi băieţi: Stere (tatăl Simonei) şi Iancu. Stere a ţinut neapărat să-şi aducă la Constanţa şi părinţii. Aşa se face că în anul 1995 s-au mutat şi ei la Constanţa, la o casă distanţă de casa fiului lor. Acum, când e plecată familia Halep, bunicii au grijă de casă. Împreună cu ei locuieşte fratele lui Stere, Iancu, dar şi nepoţii. ', '1991-09-27'),
 (3, 'visible', 'Scoala primara', 'Simona a început studiul la Şcoala Gimnazială nr. 30, din Constanţa. Acolo,  la intrare, pe panoul pe care sunt expuse rezultate notabile ale elevilor, indiferent de disciplină, stă, la loc de cinste, o poză cu Simona Halep. ”Este mândria noastră”, a declarat directorul şcolii, Aneta Dragnea, cea care i-a fost Simonei profesor de religie şi de educaţie civică.”Îmi amintesc şi acum când intram în clasă şi îi vedeam direct ochii mari. Sătea în a treia bancă de pe rândul de la mijloc şi primele lucruri pe care le remarcam când intram la oră erau faţa ei şi ochii expresivi. Era cuminte, uneori poate prea cuminte pentru un copil la acea vârstă, dar ea de mică îşi consuma toată energia concentrându-se la tenis”, a povestit doamna Dragnea.\r\n', '2006-07-01'),
-(20, 'visible', 'La vartsa de 4 ani s-a apucat de tenis', 'Antrenorul fratelui sau a pus ochii imediat pe fetiţa de patru ani şi puţin. „Avea ţinută de sportivă de mică. Am văzut-o şi le-am spus părinţilor: «O iau la tenis». Mi-a plăcut mult. Avea o motricitate extraordinară. La cinci ani, alerga precum o sportivă, deşi era cât racheta de mică. Promitea mult”, povesteşte Ioan Stan. Acesta a lucrat doi ani cu Simona, la Club „Castel” din Mamaia. „La început, pregătirea nu a fost foarte intensă, două - trei antrenamente pe săptămână, întrucât era foarte mică. Nu am ajuns cu ea la concursuri, că nici nu erau întreceri pentru vârsta ei. Am încercat să-i transmit totul într-o manieră frontală. Am vrut să ştie tot. Am lucrat cu ea toate elementele. Era o fetiţă harnică, modestă, talentată şi inteligentă. Avea o inteligenţă nativă. Nu i-am zis de două ori că trebuie să strângă mingile. Era harnică şi conştiincioasă. Nici nu mai întorceam capul, pentru că ştiam că ea îşi vede de treabă. Avea o îndemânare aparte. Alerga, sărea, aprecia corect loviturile şi avea imaginaţie în joc. Se vedea limpede că e un copil cu chemare pentru sport în general şi pentru tenis în special”, îşi aminteşte primul antrenor al Simonei Halep. ', '1995-09-24'),
+(20, 'visible', 'La varsta de 4 ani s-a apucat de tenis', 'Antrenorul fratelui sau a pus ochii imediat pe fetiţa de patru ani şi puţin. „Avea ţinută de sportivă de mică. Am văzut-o şi le-am spus părinţilor: «O iau la tenis». Mi-a plăcut mult. Avea o motricitate extraordinară. La cinci ani, alerga precum o sportivă, deşi era cât racheta de mică. Promitea mult”, povesteşte Ioan Stan. Acesta a lucrat doi ani cu Simona, la Club „Castel” din Mamaia. „La început, pregătirea nu a fost foarte intensă, două - trei antrenamente pe săptămână, întrucât era foarte mică. Nu am ajuns cu ea la concursuri, că nici nu erau întreceri pentru vârsta ei. Am încercat să-i transmit totul într-o manieră frontală. Am vrut să ştie tot. Am lucrat cu ea toate elementele. Era o fetiţă harnică, modestă, talentată şi inteligentă. Avea o inteligenţă nativă. Nu i-am zis de două ori că trebuie să strângă mingile. Era harnică şi conştiincioasă. Nici nu mai întorceam capul, pentru că ştiam că ea îşi vede de treabă. Avea o îndemânare aparte. Alerga, sărea, aprecia corect loviturile şi avea imaginaţie în joc. Se vedea limpede că e un copil cu chemare pentru sport în general şi pentru tenis în special”, îşi aminteşte primul antrenor al Simonei Halep. ', '1995-09-24'),
 (18, 'visible', 'Facultatea', 'În 2014 și-a luat licența la Facultatea de Educație Fizică și Sport a Universității „Ovidius” din Constanța.[5]', '2014-06-15'),
 (21, 'visible', 'Liceul', ' Între anii 2006 și 2010, Simona Halep a fost eleva Liceului cu Program Sportiv „Nicolae Rotaru” din Constanța.[4]\r\n', '2010-09-15');
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Eliminarea datelor din tabel `comments`
+--
+
+INSERT INTO `comments` (`id`, `user_id`, `time`, `content`) VALUES
+(1, 8, '2019-02-21 15:00:13', 'Primul comentariu despre Simona'),
+(2, 8, '2019-02-21 15:10:46', 'al doilea cometariu');
 
 -- --------------------------------------------------------
 
@@ -112,7 +133,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `nickname`, `picture`, `sub`) VALUES
-(4, 'mugur serban', 'mugur3', 'picttt', 'google-oauth2|106682227812133893636');
+(8, 'mugurel serban', 'mugur.serban2012', 'https://lh6.googleusercontent.com/-EUv5gMWli94/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQP5x83OqdPxhneDPPuCkYqwmQXpHQ/mo/photo.jpg', 'google-oauth2|106682227812133893636');
 
 --
 -- Indexuri pentru tabele eliminate
@@ -129,6 +150,12 @@ ALTER TABLE `adminusers`
 -- Indexuri pentru tabele `biography`
 --
 ALTER TABLE `biography`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexuri pentru tabele `comments`
+--
+ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -161,6 +188,12 @@ ALTER TABLE `biography`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT pentru tabele `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
 -- AUTO_INCREMENT pentru tabele `competitions`
 --
 ALTER TABLE `competitions`
@@ -170,7 +203,7 @@ ALTER TABLE `competitions`
 -- AUTO_INCREMENT pentru tabele `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
