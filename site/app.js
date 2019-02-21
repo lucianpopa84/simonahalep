@@ -1,13 +1,14 @@
 window.router = new kendo.Router();
 import Auth from './js/auth.js';
 import BiographyView from "./js/biographyView.js";
+import homePageHtml from "./js/homePage.js";
 
 $(document).ready(function () {
 
     router.route("/", function () {
         $("#navb a").removeClass("active");
         $("#sectionArea").empty();
-        //$("#sectionArea").html(`<h1>INDEX PAGE</h1>`);
+        $("#sectionArea").html(homePageHtml);
     });
 
     router.route("/biography", () => {

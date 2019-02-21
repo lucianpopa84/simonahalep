@@ -1,3 +1,4 @@
+
 #logoImage {
     background-image: url("https://simonahalep.com/wp-content/uploads/photo-gallery/imported_from_media_libray/simona-in-action-2.jpg?bwg=1543850905");
     background-position: center top; 
@@ -15,7 +16,7 @@
 
 
 #sectionArea{
-    
+    padding: 20px;
 }
 
 
