@@ -28,7 +28,7 @@ export default class CommentsView {
 </form>
         `);
         container.append(form);
-        form.on('submit', (e) => { alert('intra'); e.preventDefault(); this.addComment(form, container); })
+        form.on('submit', (e) => { e.preventDefault(); this.addComment(form, container); })
     }
     addComment(formular, container) {
         let inputs = formular.serializeArray();
