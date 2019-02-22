@@ -1,26 +1,19 @@
-
-#logoImage {
-    background-image: url("https://simonahalep.com/wp-content/uploads/photo-gallery/imported_from_media_libray/simona-in-action-2.jpg?bwg=1543850905");
-    background-position: center top; 
-    height: 800px;
-
-}
 #navbarContainer{
     background-color: rgba(30,30,30,0.6);
     border-radius: 5px;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 96%;
+    z-index:10;
 }
-.navbar{
-    
-
+#carousel{
+    position: relative;
+    padding: 0;
 }
-
-
 #sectionArea{
     padding: 20px;
 }
-
-
-
 ul.timeline {
     list-style-type: none;
     position: relative;
@@ -151,31 +144,12 @@ ul.timeline > li:hover:before {
         text-align: center;
     }
 }
-
-
-
-/* CSS used for positioning the footers at the bottom of the page. */
-/* You can remove this. */
-
-html{
-    height: 100%;
-}
-
 body{
     display: flex;
     display: -webkit-flex;
     flex-direction: column;
     -webkit-flex-direction: column;
-    height: 100%;
 }
 
-.content{
-   flex: 1 0 auto;
-   -webkit-flex: 1 0 auto;
-   min-height: 200px;
-}
 
-#myFooter{
-   flex: 0 0 auto;
-   -webkit-flex: 0 0 auto;
-}
+
