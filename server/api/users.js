@@ -112,8 +112,6 @@ router.put("/", VerifyToken('admin'), (req, res, next) => {
 
     var sub = req.body.sub;
     console.log('body:', req.body);
-    q = User.updateByDataSQL(req.body);
-    console.log("q:", q);
     db.query(User.updateByDataSQL(req.body), (err, data) => {
         if (!err) {
             if (data && data.affectedRows > 0) {

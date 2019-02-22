@@ -8,13 +8,13 @@ class Comment {
 
     getAddSQL() {
         let { userId, content } = this;
-        let sql = `INSERT INTO COMMENTS (user_id, content) 
+        let sql = `INSERT INTO COMMENTS (userId, content) 
                        VALUES('${userId}','${content}')`;
         return sql;
     }
 
     static getByIdSQL(id) {
-        let sql = `SELECT c.*, u.id as userId FROM COMMENTS as c, users as u WHERE ID = ${id} and c.user_id=u.id`;
+        let sql = `SELECT c.*, u.id as userId FROM COMMENTS as c, users as u WHERE ID = ${id} and c.userId=u.id`;
         return sql;
     }
 
@@ -30,8 +30,10 @@ class Comment {
         return sql;
     }
 
-    static getAllSQL() {
-        let sql = `SELECT c.*, u.nickname as user FROM comments as c, users as u where u.id=c.user_id order by time desc limit 20`;
+    static getAllSQL(userType) {
+        console.log('userType', userType);
+        let unbannedCond = (userType != 'admin') ? ' and banned=0 ' : '';
+        let sql = `SELECT c.*, u.nickname as user, u.banned FROM comments as c, users as u where u.id=c.userId ${unbannedCond} order by time desc limit 20`;
         console.log(sql);
         return sql;
     }

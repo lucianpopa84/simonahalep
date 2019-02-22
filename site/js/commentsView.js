@@ -1,11 +1,9 @@
 import Comment from "./comment.js";
-import Auth from "./auth.js";
 export default class CommentsView {
     constructor() {
         this.comments = [];
     }
     render(container) {
-        console.log("render function");
         container.empty();
         container.append("<h2>Comentarii:</h2>");
         this.showAddCommentForm(container);
@@ -66,7 +64,6 @@ export default class CommentsView {
                 content: "application/json",
                 context: this,
                 success: function (data) {
-                    let id = 0;
                     let results = data.data;
                     for (let result of results) {
                         let comment = new Comment(result);

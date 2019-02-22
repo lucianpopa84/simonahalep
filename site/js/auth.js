@@ -14,7 +14,6 @@ export default class Auth {
         this.userProfile = null;
         this.profileElement = profileElement;
         if (this.isAuthenticated()) {
-            console.log('is auth');
             if (localStorage.getItem('localToken')) {
                 this.localToken = localStorage.getItem('localToken');
                 this.userProfile = JSON.parse(localStorage.getItem('userProfile'));
@@ -32,7 +31,6 @@ export default class Auth {
         }
     }
     localLogin(authResult) {
-        console.log("local login");
         localStorage.setItem('isLoggedInVisitor', 'true');
         // Set the time that the access token will expire at
         this.expiresAt = JSON.stringify(
@@ -40,11 +38,9 @@ export default class Auth {
         );
         this.accessToken = authResult.accessToken;
         this.idToken = authResult.idToken;
-        console.log('apel getProfile...');
         this.getProfile();
     }
     getLocalToken() {
-        console.log('enter getLocalToken');
         $.ajax('http://localhost:8080/users/',
             {
                 method: "POST",
@@ -56,7 +52,6 @@ export default class Auth {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + this.accessToken);
                 },
                 success: function (data) {
-                    console.log("data returned:", data);
                     this.localToken = data.token;
                     $.ajaxSetup({
                         headers: {
@@ -69,20 +64,16 @@ export default class Auth {
                 },
                 error: function (err) {
                     console.log(err);
-
                 }
             }
         );
     }
     handleAuthentication() {
         this.webAuth.parseHash((err, authResult) => {
-            console.log("handle autentification here", err, authResult);
             if (authResult && authResult.accessToken && authResult.idToken) {
-                console.log('caz1');
                 window.location.hash = '';
                 this.localLogin(authResult);
             } else if (err) {
-                console.log('caz2');
                 console.log(err);
                 alert(
                     'Error: ' + err.error + '. Check the console for further details.'
@@ -90,11 +81,9 @@ export default class Auth {
             } else {
                 console.log('caz3');
             }
-            //displayButtons();
         });
     }
     renewTokens() {
-        console.log("renew token");
         this.webAuth.checkSession({}, (err, authResult) => {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 this.localLogin(authResult);
@@ -128,17 +117,14 @@ export default class Auth {
     isAuthenticated() {
         // Check whether the current time is past the
         // Access Token's expiry time
-        console.log("check for autentification...");
         var expiration = parseInt(this.expiresAt) || 0;
-        console.log("is logged", localStorage.getItem('isLoggedInVisitor'));
-        console.log("exp", expiration);
         if (localStorage.getItem('isLoggedInVisitor') === 'true') {
             if (!expiration || (new Date().getTime() < expiration)) {
                 return true;
             }
         }
         return false;
-        //return localStorage.getItem('isLoggedInVisitor') === 'true' && expiration && new Date().getTime() < expiration;
+
     }
     showProfile() {
         let profile = this.userProfile;
@@ -148,22 +134,16 @@ export default class Auth {
         a.appendTo(li);
         this.profileElement.empty();
         this.profileElement.append(li);
-        console.log("end showprofile");
     }
     getProfile() {
         if (!this.userProfile) {
             if (!this.accessToken) {
                 console.log('Access Token must exist to fetch profile');
             }
-
             this.webAuth.client.userInfo(this.accessToken, (err, profile) => {
                 if (profile) {
                     this.userProfile = profile;
-                    console.log("picture", profile.picture);
-                    console.log("name", profile.name);
                     this.showProfile();
-                    console.log("user profile:", this.userProfile);
-                    console.log('apel getLocalToken...');
                     this.getLocalToken();
                 }
             });

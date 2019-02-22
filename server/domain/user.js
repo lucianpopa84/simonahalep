@@ -1,11 +1,12 @@
 class User {
 
-    constructor(sub, name, nickname, picture) {
+    constructor(sub, name, nickname, picture, banned) {
         this.id = 0;
         this.sub = sub;
         this.name = name;
         this.nickname = nickname;
         this.picture = picture;
+        this.banned = banned;
     }
 
     getAddSQL() {
@@ -32,8 +33,14 @@ class User {
     }
 
     static updateByDataSQL(data) {
-        let { sub, name, nickname, picture } = data;
-        let sql = `update users set name='${name}',  nickname='${nickname}', picture='${picture}' WHERE sub = '${sub}'`;
+        let { id, sub, name, nickname, picture, banned } = data;
+        let user = { sub, name, nickname, picture, banned };
+        let update = '';
+        for (let field in user) {
+            update += update ? ',' : '';
+            update += (user[field] != undefined) ? ` ${field} = '${user[field]}' ` : '';
+        }
+        let sql = `update users set ${update} WHERE id = '${id}'`; //name='${name}',  nickname='${nickname}', picture='${picture}', banned='${banned}'
         return sql;
     }
 

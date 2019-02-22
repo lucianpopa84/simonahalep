@@ -14,7 +14,6 @@ export default class BiographyView {
         container.append(ul);
     }
 
-
     load(container) {
         if (this.biographies) {
             this.biographies.length = 0;

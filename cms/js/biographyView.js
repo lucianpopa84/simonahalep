@@ -76,7 +76,6 @@ export default class BiographyView {
                 content: "application/json",
                 context: this,
                 success: function (data) {
-                    let id = 0;
                     let results = data.data;
                     for (let result of results) {
                         let biography = new Biography(result);

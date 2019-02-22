@@ -28,10 +28,10 @@ var VerifyToken = require('./verifyToken');
 router.get('/me', VerifyToken('admin'), function (req, res) {
     var token = req.headers['x-access-token'];
     if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
-
     jwt.verify(token, config.secret, function (err, decoded) {
-        if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-
+        if (err) {
+            return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
+        }
         res.status(200).send(decoded);
     });
 });
@@ -40,7 +40,6 @@ router.post('/login', function (req, res) {
     console.log('login route:', req.body);
     db.query(AdminUser.getByUserNameSQL(req.body.username), (err, data) => {
         let user = data[0];
-        console.log(err, "user:", user);
         if (err) return res.status(500).send('Error on the server.');
         if (!user) return res.status(404).send('No user found.');
         var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);

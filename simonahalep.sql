@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gazdă: 127.0.0.1
--- Timp de generare: feb. 21, 2019 la 05:11 PM
+-- Timp de generare: feb. 22, 2019 la 11:11 AM
 -- Versiune server: 10.1.38-MariaDB
 -- Versiune PHP: 7.3.2
 
@@ -79,7 +79,7 @@ INSERT INTO `biography` (`id`, `status`, `title`, `description`, `date`) VALUES
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `content` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -88,9 +88,10 @@ CREATE TABLE `comments` (
 -- Eliminarea datelor din tabel `comments`
 --
 
-INSERT INTO `comments` (`id`, `user_id`, `time`, `content`) VALUES
+INSERT INTO `comments` (`id`, `userId`, `time`, `content`) VALUES
 (1, 8, '2019-02-21 15:00:13', 'Primul comentariu despre Simona'),
-(2, 8, '2019-02-21 15:10:46', 'al doilea cometariu');
+(2, 8, '2019-02-21 15:10:46', 'al doilea cometariu'),
+(31, 4, '2019-02-22 09:41:40', 'comentariu de sters');
 
 -- --------------------------------------------------------
 
@@ -125,15 +126,17 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `nickname` varchar(50) NOT NULL,
   `picture` varchar(255) NOT NULL,
-  `sub` varchar(255) NOT NULL
+  `sub` varchar(255) NOT NULL,
+  `banned` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Eliminarea datelor din tabel `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `nickname`, `picture`, `sub`) VALUES
-(8, 'mugurel serban', 'mugur.serban2012', 'https://lh6.googleusercontent.com/-EUv5gMWli94/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQP5x83OqdPxhneDPPuCkYqwmQXpHQ/mo/photo.jpg', 'google-oauth2|106682227812133893636');
+INSERT INTO `users` (`id`, `name`, `nickname`, `picture`, `sub`, `banned`) VALUES
+(8, 'mugurel serban', 'mugur.serban2012', 'https://lh6.googleusercontent.com/-EUv5gMWli94/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQP5x83OqdPxhneDPPuCkYqwmQXpHQ/mo/photo.jpg', 'google-oauth2|106682227812133893636', 0),
+(4, 'fictiv', 'nicky', '', '', 1);
 
 --
 -- Indexuri pentru tabele eliminate
@@ -185,13 +188,13 @@ ALTER TABLE `adminusers`
 -- AUTO_INCREMENT pentru tabele `biography`
 --
 ALTER TABLE `biography`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pentru tabele `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT pentru tabele `competitions`

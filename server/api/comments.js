@@ -5,9 +5,9 @@ const router = express.Router();
 var VerifyToken = require('./verifyToken');
 
 //handles (get) - return all records
-router.get("/", (req, res, next) => {
+router.get("/", VerifyToken(''), (req, res, next) => {
     console.log("comments served...");
-    db.executeQuery(Comment.getAllSQL(), (err, data) => {
+    db.executeQuery(Comment.getAllSQL(req.userType), (err, data) => {
         console.log(data);
         if (!err) {
             res.json({

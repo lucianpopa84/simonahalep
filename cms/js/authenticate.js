@@ -2,11 +2,11 @@ export default class Authenticate {
     constructor(element) {
         this.element = element;
         if (!localStorage.getItem('isLoggedInAdmin')) {
-            this.token = "";
+            this.adminToken = "";
             this.username = "";
             this.showLogin();
         } else {
-            this.token = localStorage.getItem('localToken');
+            this.adminToken = localStorage.getItem('localAdminToken');
             this.username = localStorage.getItem('username');
             this.element.empty();
             this.doLogin();
@@ -14,17 +14,17 @@ export default class Authenticate {
     }
 
     logout() {
-        this.token = "";
+        this.adminToken = "";
         this.username = "";
         $.ajaxSetup({
             headers: {
-                'x-access-token': this.token
+                'x-access-token': this.adminToken
             }
         });
         var event = new Event('userLoggedOut');
         window.dispatchEvent(event);
         localStorage.removeItem('isLoggedInAdmin');
-        localStorage.removeItem('localToken');
+        localStorage.removeItem('localAdminToken');
         localStorage.removeItem('username');
         this.showLogin();
     }
@@ -70,7 +70,7 @@ export default class Authenticate {
     doLogin() {
         $.ajaxSetup({
             headers: {
-                'x-access-token': this.token
+                'x-access-token': this.adminToken
             }
         });
         this.element.append(`Hi, ${this.username}`);
@@ -81,9 +81,9 @@ export default class Authenticate {
         var event = new Event('userLoggedIn');
         window.dispatchEvent(event);
         localStorage.setItem('isLoggedInAdmin', 'true');
-        localStorage.setItem('localToken', this.token);
+        localStorage.setItem('localAdminToken', this.adminToken);
         localStorage.setItem('username', this.username);
-        router.navigate("/biography");
+
     }
     requestLogin(formular) {
         let inputs = formular.serializeArray();
@@ -104,7 +104,7 @@ export default class Authenticate {
                     if (!data.auth) {
                         $("#errMsg").html("Login error");
                     } else {
-                        this.token = data.token;
+                        this.adminToken = data.token;
                         this.username = data.username;
                         $("#errMsg").html("Login ok");
                         $('#modalLoginForm').modal('hide');
