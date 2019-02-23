@@ -3,6 +3,7 @@ import Auth from './js/auth.js';
 import BiographyView from "./js/biographyView.js";
 import homePageHtml from "./js/homePage.js";
 import CommentsView from "./js/commentsView.js";
+import CareerStatisticsView from "./js/careerStatisticsView.js";
 
 
 $(document).ready(function () {
@@ -23,7 +24,8 @@ $(document).ready(function () {
     router.route("/careerStatistics", () => {
         $("#navb a").removeClass("active");
         $("#careerStatistics").addClass("active");
-        sectionArea.html("<h1>CareerStatistics view</h1>");
+        let careerStatisticsView = new CareerStatisticsView();
+        careerStatisticsView.load(sectionArea);
     });
 
     router.route("/events", () => {
