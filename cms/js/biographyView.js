@@ -63,6 +63,7 @@ export default class BiographyView {
         container.append(`<div class="mt-2"> <h1 class="d-inline-block">Biography</h1> <button id="addBiographyButton" class="btn btn-success float-right m-1"><span class='font-weight-bold'>+</span> Add biography</button></div > `);
         $("#addBiographyButton").on('click', () => { router.navigate('/biography/add') });
         container.append(grid);
+        // console.log('test');
     }
 
     load(container) {
