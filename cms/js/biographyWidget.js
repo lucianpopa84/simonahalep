@@ -71,7 +71,7 @@ export default class BiographyWidget extends Biography {
   <input type="hidden" name="id" value="${id}">
   <div class="form-group">
     <label for="date">Date:</label>
-    <input type="date" class="form-control" id="date" name="date" value="${date}" placeholder="date of event" required>
+    <input  class="form-control" id="date" name="date" value="${date}" placeholder="date of event" required>
   </div>
   <div class="form-group">
     <label for="title">Title</label>
@@ -104,6 +104,7 @@ export default class BiographyWidget extends Biography {
         container.empty();
         container.append(`<h2>Add/Edit Biography</h2>`);
         container.append(form);
+        $("#date").kendoDatePicker({ format: "yyyy-MM-dd" });
         if (!id) {
             form.on('submit', (e) => { e.preventDefault(); this.addBiography(form); })
         } else {

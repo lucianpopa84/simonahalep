@@ -4,11 +4,14 @@ import BiographyWidget from './js/biographyWidget.js';
 import Authenticate from './js/authenticate.js';
 import CommentsView from './js/commentsView.js';
 import CommentWidget from './js/commentWidget.js';
+import EventsView from './js/eventsView.js';
+import EventWidget from './js/eventWidget.js';
 
 
 $(document).ready(function () {
     var biographyView = new BiographyView();
     var commentsView = new CommentsView();
+    var eventsView = new EventsView();
 
     router.route("/", function () {
         $("#main-container").empty();
@@ -39,7 +42,16 @@ $(document).ready(function () {
     router.route("/events", () => {
         $("#v-pills-tab a").removeClass("active");
         $("#events-tab").addClass("active");
-        $("#main-container").html("<h1>Events view</h1>");
+        eventsView.load($("#main-container"));
+    });
+    router.route("/events/add", () => {
+        EventWidget.showUpdateEventForm($("#main-container"));
+    });
+    router.route("/events/delete/:id", (id) => {
+        EventWidget.deleteEvent(id);
+    });
+    router.route("/events/:id", function (id) {
+        EventWidget.editEvent($("#main-container"), id);
     });
 
     router.route("/comments", () => {

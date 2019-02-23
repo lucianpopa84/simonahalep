@@ -1,16 +1,17 @@
 class Competition {
 
-    constructor(name, location, date) {
+    constructor(name, location, startDate, endDate) {
         this.id = 0;
         this.name = name;
         this.location = location;
-        this.date = date;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     getAddSQL() {
-        let { name, location, date } = this;
-        let sql = `INSERT INTO COMPETITIONS (name, location, date) 
-                       VALUES('${name}','${location}', '${date}')`;
+        let { name, location, startDate, endDate } = this;
+        let sql = `INSERT INTO COMPETITIONS (name, location, startDate, endDate) 
+                       VALUES('${name}','${location}', '${startDate}', '${endDate}')`;
         return sql;
     }
 
@@ -26,8 +27,8 @@ class Competition {
     }
 
     static updateByDataSQL(data) {
-        let { id, name, location, date } = data;
-        let sql = `update COMPETITIONS set name='${name}',  location='${location}', date='${date}' WHERE ID = ${id}`;
+        let { id, name, location, startDate, endDate, description } = data;
+        let sql = `update COMPETITIONS set name='${name}',  location='${location}', startDate='${startDate}', endDate='${endDate}', description='${description}' WHERE ID = ${id}`;
         return sql;
     }
 

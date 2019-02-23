@@ -74,6 +74,8 @@ router.delete("/:id", VerifyToken('admin'), (req, res, next) => {
 router.put("/", VerifyToken('admin'), (req, res, next) => {
     var id = req.body.id;
     console.log('update route:', req.body);
+    q = Competition.updateByDataSQL(req.body);
+    console.log(q);
     db.query(Competition.updateByDataSQL(req.body), (err, data) => {
         console.log(err, data);
         if (!err) {
