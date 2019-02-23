@@ -12,7 +12,7 @@ admin.simonahalep.ro:
 - login, logout
 - add, edit, delete elemente biografie
 - add, edit, delete elemente palmares
-- add, edit, delete elemente lista competitii viitoare
+- add, edit, delete elemente lista competitii viitoare test
 - ban user (ban comments)
 
 project management cu jira (de creeat proiect nou pe atlasian), backend mysql, router kendo
