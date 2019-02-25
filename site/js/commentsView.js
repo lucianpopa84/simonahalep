@@ -6,11 +6,20 @@ export default class CommentsView {
     render(container) {
         container.empty();
         container.append("<h2>Comentarii:</h2>");
-        this.showAddCommentForm(container);
+        let row = $(`<div class='row'></div>`);
+        let leftCol = $(`<div class="col-8"></col>`)
+        let rightCol = $(`<div class="col-4"></col>`)
+        let video = `<iframe width="100%" height="400" src="https://www.youtube.com/embed/1JtpmTmC9Kg?start=100&autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        leftCol.append(video);
+        this.showAddCommentForm(leftCol);
         container.append("<p></p>");
         for (let comment of this.comments) {
-            comment.render(container);
+            comment.render(rightCol);
         }
+        row.append(leftCol);
+        row.append(rightCol);
+        container.append(row);
+
     }
     showAddCommentForm(container) {
         if (!auth.localToken) {
