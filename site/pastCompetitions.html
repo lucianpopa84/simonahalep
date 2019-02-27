@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="kendo/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="kendo/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="kendo/styles/kendo.default.mobile.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .responsive {
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div id="logoImage" class="container pt-2">
+            <div id="navbarContainer" class="">
+
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <a id="logo" class=" navbar-brand" href=" javascript:void(0)">SimonaHalep.Net</a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                        data-target="#navb">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navb">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a id="biography" class="nav-link" href="javascript:void(0)">Biografie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="careerStatistics" class="nav-link" href="javascript:void(0)">Palmares</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="events" class="nav-link" href="javascript:void(0)">Evenimente</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="comments" class="nav-link" href="javascript:void(0)">Comentarii</a>
+                            </li>
+
+                        </ul>
+                        <ul id="authenticate" class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a id="user-log" class="nav-link" href="javascript:void(0)">Login</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Cautare">
+                            <button class="btn btn-success my-2 my-sm-0" type="button">Cauta</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="container" id="sectionArea">
+
+        </div>
+    </div>
+
+    <div class="accordion container pt-20" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                        2019
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row font-weight-bold">
+                            <div class="col-sm">
+                                Round
+                            </div>
+                            <div class="col-sm">
+                                Opponent
+                            </div>
+                            <div class="col-sm">
+                                Result
+                            </div>
+                            <div class="col-sm">
+                                Rank
+                            </div>
+                            <div class="col-sm">
+                                Scores
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                Round 128
+                            </div>
+                            <div class="col-sm">
+                                Kaia Kanepi (EST)
+                            </div>
+                            <div class="col-sm">
+                                W
+                            </div>
+                            <div class="col-sm">
+                                71
+                            </div>
+                            <div class="col-sm">
+                                6-7(2) 6-4 6-2
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                Round 64
+                            </div>
+                            <div class="col-sm">
+                                Sofia Kenin (USA)
+                            </div>
+                            <div class="col-sm">
+                                W
+                            </div>
+                            <div class="col-sm">
+                                37
+                            </div>
+                            <div class="col-sm">
+                                6-3 6-7(5) 6-4
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                Round 32
+                            </div>
+                            <div class="col-sm">
+                                Venus Williams (USA)
+                            </div>
+                            <div class="col-sm">
+                                W
+                            </div>
+                            <div class="col-sm">
+                                36
+                            </div>
+                            <div class="col-sm">
+                                6-2 6-3
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                Round 16
+                            </div>
+                            <div class="col-sm">
+                                Serena Williams
+                                (USA)
+                            </div>
+                            <div class="col-sm">
+                                L
+                            </div>
+                            <div class="col-sm">
+                                16
+                            </div>
+                            <div class="col-sm">
+                                6-1 4-6 6-4
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            2018
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row font-weight-bold">
+                                <div class="col-sm">
+                                    Round
+                                </div>
+                                <div class="col-sm">
+                                    Opponent
+                                </div>
+                                <div class="col-sm">
+                                    Result
+                                </div>
+                                <div class="col-sm">
+                                    Rank
+                                </div>
+                                <div class="col-sm">
+                                    Scores
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm">
+                                    Round 128
+                                </div>
+                                <div class="col-sm">
+                                    Kaia Kanepi (EST)
+                                </div>
+                                <div class="col-sm">
+                                    W
+                                </div>
+                                <div class="col-sm">
+                                    71
+                                </div>
+                                <div class="col-sm">
+                                    6-7(2) 6-4 6-2
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm">
+                                    Round 64
+                                </div>
+                                <div class="col-sm">
+                                    Sofia Kenin (USA)
+                                </div>
+                                <div class="col-sm">
+                                    W
+                                </div>
+                                <div class="col-sm">
+                                    37
+                                </div>
+                                <div class="col-sm">
+                                    6-3 6-7(5) 6-4
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm">
+                                    Round 32
+                                </div>
+                                <div class="col-sm">
+                                    Venus Williams (USA)
+                                </div>
+                                <div class="col-sm">
+                                    W
+                                </div>
+                                <div class="col-sm">
+                                    36
+                                </div>
+                                <div class="col-sm">
+                                    6-2 6-3
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm">
+                                    Round 16
+                                </div>
+                                <div class="col-sm">
+                                    Serena Williams
+                                    (USA)
+                                </div>
+                                <div class="col-sm">
+                                    L
+                                </div>
+                                <div class="col-sm">
+                                    16
+                                </div>
+                                <div class="col-sm">
+                                    6-1 4-6 6-4
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                                2017
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row font-weight-bold">
+                                    <div class="col-sm">
+                                        Round
+                                    </div>
+                                    <div class="col-sm">
+                                        Opponent
+                                    </div>
+                                    <div class="col-sm">
+                                        Result
+                                    </div>
+                                    <div class="col-sm">
+                                        Rank
+                                    </div>
+                                    <div class="col-sm">
+                                        Scores
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        Round 128
+                                    </div>
+                                    <div class="col-sm">
+                                        Kaia Kanepi (EST)
+                                    </div>
+                                    <div class="col-sm">
+                                        W
+                                    </div>
+                                    <div class="col-sm">
+                                        71
+                                    </div>
+                                    <div class="col-sm">
+                                        6-7(2) 6-4 6-2
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        Round 64
+                                    </div>
+                                    <div class="col-sm">
+                                        Sofia Kenin (USA)
+                                    </div>
+                                    <div class="col-sm">
+                                        W
+                                    </div>
+                                    <div class="col-sm">
+                                        37
+                                    </div>
+                                    <div class="col-sm">
+                                        6-3 6-7(5) 6-4
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        Round 32
+                                    </div>
+                                    <div class="col-sm">
+                                        Venus Williams (USA)
+                                    </div>
+                                    <div class="col-sm">
+                                        W
+                                    </div>
+                                    <div class="col-sm">
+                                        36
+                                    </div>
+                                    <div class="col-sm">
+                                        6-2 6-3
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        Round 16
+                                    </div>
+                                    <div class="col-sm">
+                                        Serena Williams
+                                        (USA)
+                                    </div>
+                                    <div class="col-sm">
+                                        L
+                                    </div>
+                                    <div class="col-sm">
+                                        16
+                                    </div>
+                                    <div class="col-sm">
+                                        6-1 4-6 6-4
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                                    2016
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFour" class="collapse show" aria-labelledby="headingFour"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="row font-weight-bold">
+                                        <div class="col-sm">
+                                            Round
+                                        </div>
+                                        <div class="col-sm">
+                                            Opponent
+                                        </div>
+                                        <div class="col-sm">
+                                            Result
+                                        </div>
+                                        <div class="col-sm">
+                                            Rank
+                                        </div>
+                                        <div class="col-sm">
+                                            Scores
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            Round 128
+                                        </div>
+                                        <div class="col-sm">
+                                            Kaia Kanepi (EST)
+                                        </div>
+                                        <div class="col-sm">
+                                            W
+                                        </div>
+                                        <div class="col-sm">
+                                            71
+                                        </div>
+                                        <div class="col-sm">
+                                            6-7(2) 6-4 6-2
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            Round 64
+                                        </div>
+                                        <div class="col-sm">
+                                            Sofia Kenin (USA)
+                                        </div>
+                                        <div class="col-sm">
+                                            W
+                                        </div>
+                                        <div class="col-sm">
+                                            37
+                                        </div>
+                                        <div class="col-sm">
+                                            6-3 6-7(5) 6-4
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            Round 32
+                                        </div>
+                                        <div class="col-sm">
+                                            Venus Williams (USA)
+                                        </div>
+                                        <div class="col-sm">
+                                            W
+                                        </div>
+                                        <div class="col-sm">
+                                            36
+                                        </div>
+                                        <div class="col-sm">
+                                            6-2 6-3
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            Round 16
+                                        </div>
+                                        <div class="col-sm">
+                                            Serena Williams
+                                            (USA)
+                                        </div>
+                                        <div class="col-sm">
+                                            L
+                                        </div>
+                                        <div class="col-sm">
+                                            16
+                                        </div>
+                                        <div class="col-sm">
+                                            6-1 4-6 6-4
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                                        data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                                        2015
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse show" aria-labelledby="headingFour"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="container">
+                                        <div class="row font-weight-bold">
+                                            <div class="col-sm">
+                                                Round
+                                            </div>
+                                            <div class="col-sm">
+                                                Opponent
+                                            </div>
+                                            <div class="col-sm">
+                                                Result
+                                            </div>
+                                            <div class="col-sm">
+                                                Rank
+                                            </div>
+                                            <div class="col-sm">
+                                                Scores
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                Round 128
+                                            </div>
+                                            <div class="col-sm">
+                                                Kaia Kanepi (EST)
+                                            </div>
+                                            <div class="col-sm">
+                                                W
+                                            </div>
+                                            <div class="col-sm">
+                                                71
+                                            </div>
+                                            <div class="col-sm">
+                                                6-7(2) 6-4 6-2
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                Round 64
+                                            </div>
+                                            <div class="col-sm">
+                                                Sofia Kenin (USA)
+                                            </div>
+                                            <div class="col-sm">
+                                                W
+                                            </div>
+                                            <div class="col-sm">
+                                                37
+                                            </div>
+                                            <div class="col-sm">
+                                                6-3 6-7(5) 6-4
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                Round 32
+                                            </div>
+                                            <div class="col-sm">
+                                                Venus Williams (USA)
+                                            </div>
+                                            <div class="col-sm">
+                                                W
+                                            </div>
+                                            <div class="col-sm">
+                                                36
+                                            </div>
+                                            <div class="col-sm">
+                                                6-2 6-3
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                Round 16
+                                            </div>
+                                            <div class="col-sm">
+                                                Serena Williams
+                                                (USA)
+                                            </div>
+                                            <div class="col-sm">
+                                                L
+                                            </div>
+                                            <div class="col-sm">
+                                                16
+                                            </div>
+                                            <div class="col-sm">
+                                                6-1 4-6 6-4
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+</body>
+<footer>
+    <footer id="myFooter" class="container">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5>Linkuri utile</h5>
+                    <ul>
+                        <li><a href="#">Acasa</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Galerie</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Despre Simona Halep</h5>
+                    <ul>
+                        <li><a href="#">Biografie</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Comentarii</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 info">
+                    <h5>Informatii</h5>
+                    <p> Simona Halep (n. 27 septembrie 1991,[1] Constanța, România[1]) este o jucătoare profesionistă de
+                        tenis din România, aflată în prezent pe locul 2 mondial.[3]
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="second-bar">
+            <div class="container">
+                <h2 class="logo"><a href="#"> SimonaHalep.Net </a></h2>
+                <div class="social-icons">
+                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script type="module" src="app.js"></script>
+        <script src="kendo/js/kendo.all.min.js"></script>
+        <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+
+    </footer>
+
+</html>
