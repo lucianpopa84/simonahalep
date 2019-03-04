@@ -1,28 +1,27 @@
-import Biography from "./biography.js";
-import CareerStatistics from "./careerStatistics.js";
-export default class CareerStatisticsView {
+import Career from "./career.js";
+export default class CareerView {
 
     /////////////   WORK IN PROGRESS   ///////////
     
     constructor() {
-        this.biographies = [];
+        this.statistics = [];
     }
     render(container) {
         container.empty();
-        let sectionTitle = "<h1>Career Statistics</h1>";
-        let ul = $(`<ul class="timeline"></ul>`);
+        let sectionTitle = "<h1>Palmares</h1>";
+        let ul = $(`<ul> </ul>`);
         container.append(sectionTitle);
-        for (let biography of this.biographies) {
-            biography.render(ul);
+        for (let statistic of this.statistics) {
+            statistic.render(ul);
         }
         container.append(ul);
     }
 
     load(container) {
-        if (this.biographies) {
-            this.biographies.length = 0;
+        if (this.statistics) {
+            this.statistics.length = 0;
         }
-        $.ajax('http://localhost:8080/biography/',
+        $.ajax('http://localhost:8080/career/',
             {
                 method: "GET",
                 dataType: "json",
@@ -32,8 +31,8 @@ export default class CareerStatisticsView {
                     let id = 0;
                     let results = data.data;
                     for (let result of results) {
-                        let biography = new Biography(result);
-                        this.biographies.push(biography);
+                        let statistic = new Career(result);
+                        this.statistics.push(statistic);
                     }
                     this.render(container);
                 }

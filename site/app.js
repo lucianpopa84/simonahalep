@@ -3,7 +3,7 @@ import Auth from './js/auth.js';
 import BiographyView from "./js/biographyView.js";
 import homePageHtml from "./js/homePage.js";
 import CommentsView from "./js/commentsView.js";
-import CareerStatisticsView from "./js/careerStatisticsView.js";
+import CareerView from "./js/careerView.js";
 
 
 $(document).ready(function () {
@@ -21,11 +21,11 @@ $(document).ready(function () {
         biographyView.load(sectionArea);
     });
 
-    router.route("/careerStatistics", () => {
+    router.route("/career", () => {
         $("#navb a").removeClass("active");
-        $("#careerStatistics").addClass("active");
-        let careerStatisticsView = new CareerStatisticsView();
-        careerStatisticsView.load(sectionArea);
+        $("#career").addClass("active");
+        let careerView = new CareerView();
+        careerView.load(sectionArea);
     });
 
     router.route("/events", () => {
@@ -49,8 +49,8 @@ $(document).ready(function () {
     $("#biography").on('click', function () {
         router.navigate("/biography");
     })
-    $("#careerStatistics").on('click', function () {
-        router.navigate("/careerStatistics");
+    $("#career").on('click', function () {
+        router.navigate("/career");
 
     })
     $("#events").on('click', function () {
