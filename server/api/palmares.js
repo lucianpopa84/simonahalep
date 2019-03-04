@@ -1,28 +1,13 @@
 var express = require("express");
 var db = require("../database");
-var Competition = require("../domain/competition");
+var Palmares = require("../domain/palmares");
 const router = express.Router();
 var VerifyToken = require('./verifyToken');
 
 //handles (get) - return all records
 router.get("/", (req, res, next) => {
-    console.log("competitions served...");
-    db.executeQuery(Competition.getAllSQL(), (err, data) => {
-        if (!err) {
-            res.json({
-                success: true,
-                data
-            });
-        } else {
-            res.send('<h1>no mysql</h1>');
-        }
-    });
-});
-
-router.get("/future", (req, res, next) => {
-    console.log("competitions future served...");
-    db.executeQuery(Competition.getAllSQL(future = true), (err, data) => {
-        console.log(data);
+    console.log("palmares served...");
+    db.executeQuery(Palmares.getAllSQL(), (err, data) => {
         if (!err) {
             res.json({
                 success: true,
@@ -36,13 +21,11 @@ router.get("/future", (req, res, next) => {
 
 //handles (post) - add record
 router.post("/", VerifyToken('admin'), (req, res, next) => {
-    let competition = new Competition(req.body.name, req.body.location, req.body.startDate, req.body.endDate, req.body.description);
-    let sql = competition.getAddSQL();
-    console.log(sql);
-    db.query(competition.getAddSQL(), (err, data) => {
+    let palmares = new Palmares(req.body.turneu, req.body.an, req.body.record);
+    db.query(palmares.getAddSQL(), (err, data) => {
         console.log(err);
         res.status(200).json({
-            message: "Competition added.",
+            message: "Palmares added.",
             Id: data.insertId
         });
     });
@@ -51,16 +34,16 @@ router.post("/", VerifyToken('admin'), (req, res, next) => {
 //handle (get:id) - return one record
 router.get("/:Id", (req, res, next) => {
     let id = req.params.Id;
-    db.query(Competition.getByIdSQL(id), (err, data) => {
+    db.query(Palmares.getByIdSQL(id), (err, data) => {
         if (!err) {
             if (data && data.length > 0) {
                 res.status(200).json({
-                    message: "Competition found.",
+                    message: "Palmares found.",
                     data: data[0]
                 });
             } else {
                 res.status(200).json({
-                    message: "Competition Not found."
+                    message: "Palmares Not found."
                 });
             }
         }
@@ -71,7 +54,7 @@ router.get("/:Id", (req, res, next) => {
 router.delete("/:id", VerifyToken('admin'), (req, res, next) => {
     var id = req.params.id;
     console.log('delete request');
-    db.query(Competition.deleteByIdSQL(id), (err, data) => {
+    db.query(Palmares.deleteByIdSQL(id), (err, data) => {
         if (!err) {
             if (data && data.affectedRows > 0) {
                 res.status(200).json({
@@ -91,9 +74,7 @@ router.delete("/:id", VerifyToken('admin'), (req, res, next) => {
 router.put("/", VerifyToken('admin'), (req, res, next) => {
     var id = req.body.id;
     console.log('update route:', req.body);
-    q = Competition.updateByDataSQL(req.body);
-    console.log(q);
-    db.query(Competition.updateByDataSQL(req.body), (err, data) => {
+    db.query(Palmares.updateByDataSQL(req.body), (err, data) => {
         console.log(err, data);
         if (!err) {
             if (data && data.affectedRows > 0) {

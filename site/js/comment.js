@@ -7,6 +7,7 @@ export default class Comment {
   }
   render(container) {
     let { id, time, user, content } = this;
+    console.log("enter render");
     let div = $(`
         <div class="card border mb-3">
         <div class="card-header">${time}</div>
@@ -17,5 +18,6 @@ export default class Comment {
       </div>
       `);
     container.append(div);
+
   }
 }

@@ -111,6 +111,7 @@ export default class EventWidget extends Event {
             let { name, value } = input;
             newValues[name] = value;
         }
+        console.log(newValues);
         $.ajax('http://localhost:8080/competitions/',
             {
                 method: "POST",

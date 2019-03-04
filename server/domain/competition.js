@@ -9,9 +9,9 @@ class Competition {
     }
 
     getAddSQL() {
-        let { name, location, startDate, endDate } = this;
-        let sql = `INSERT INTO COMPETITIONS (name, location, startDate, endDate) 
-                       VALUES('${name}','${location}', '${startDate}', '${endDate}')`;
+        let { name, location, startDate, endDate, description } = this;
+        let sql = `INSERT INTO COMPETITIONS (name, location, startDate, endDate, description) 
+                       VALUES('${name}','${location}', '${startDate}', '${endDate}','${description}')`;
         return sql;
     }
 
@@ -32,8 +32,11 @@ class Competition {
         return sql;
     }
 
-    static getAllSQL() {
+    static getAllSQL(future = false) {
         let sql = `SELECT * FROM COMPETITIONS`;
+        if (future) {
+            sql += " where endDate > now()";
+        }
         return sql;
     }
 }

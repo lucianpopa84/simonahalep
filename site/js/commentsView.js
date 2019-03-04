@@ -2,24 +2,31 @@ import Comment from "./comment.js";
 export default class CommentsView {
     constructor() {
         this.comments = [];
+        this.rightCol = "";
     }
     render(container) {
         container.empty();
         container.append("<h2>Comentarii:</h2>");
         let row = $(`<div class='row'></div>`);
-        let leftCol = $(`<div class="col-8"></col>`)
-        let rightCol = $(`<div class="col-4"></col>`)
+        let leftCol = $(`<div class="col-md-8"></col>`)
+        this.rightCol = $(`<div class="col-md-4"></col>`)
         let video = `<iframe width="100%" height="400" src="https://www.youtube.com/embed/1JtpmTmC9Kg?start=100&autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
         leftCol.append(video);
         this.showAddCommentForm(leftCol);
         container.append("<p></p>");
         for (let comment of this.comments) {
-            comment.render(rightCol);
+            comment.render(this.rightCol);
         }
         row.append(leftCol);
-        row.append(rightCol);
+        row.append(this.rightCol);
         container.append(row);
 
+    }
+    renderRightCol(container) {
+        this.rightCol.empty();
+        for (let comment of this.comments) {
+            comment.render(this.rightCol);
+        }
     }
     showAddCommentForm(container) {
         if (!auth.localToken) {
@@ -44,6 +51,7 @@ export default class CommentsView {
             let { name, value } = input;
             values[name] = value;
         }
+        formular[0].reset();
         $.ajax('http://localhost:8080/comments/',
             {
                 method: "POST",
@@ -52,7 +60,11 @@ export default class CommentsView {
                 content: "application/json",
                 context: this,
                 success: function (data) {
-                    this.load(container);
+                    values["time"] = new Date().toLocaleString();
+                    values["user"] = auth.userProfile.nickname;
+                    let comment = new Comment(values);
+                    this.comments.unshift(comment);
+                    this.renderRightCol();
                 },
                 error: function (err) {
                     console.log(err);

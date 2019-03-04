@@ -54,10 +54,6 @@ export default class EventsView {
                 title: "Location",
                 width: 160
             }, {
-                field: "description",
-                title: "Description"
-
-            }, {
                 template: function (dataItem) {
                     console.log("dataitem", dataItem);
                     let buttons = `<div class="d-flex align-items-center justify-content-center">

@@ -99,7 +99,7 @@ export default class Auth {
         // Remove isLoggedInVisitor flag from localStorage
         this.webAuth.logout({
             client_id: 'WaxdX_WWU0hICTU7Wal-QjYWDtiXRaAI',
-            returnTo: 'http://localhost:5500/index.html'
+            returnTo: 'http://localhost:5500/site/'
 
         });
         localStorage.removeItem('isLoggedInVisitor');

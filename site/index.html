@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="kendo/styles/kendo.default.min.css" />
     <link rel="stylesheet" href="kendo/styles/kendo.default.mobile.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -39,8 +40,17 @@
                             <li class="nav-item">
                                 <a id="careerStatistics" class="nav-link" href="javascript:void(0)">Palmares</a>
                             </li>
-                            <li class="nav-item">
-                                <a id="events" class="nav-link" href="javascript:void(0)">Evenimente</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Competitii
+                                </a>
+                                <div class=" bg-transparent dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a id="pastEvents" class="dropdown-item" href="javascript:void(0)">Competitii
+                                        trecute</a>
+                                    <a id="events" class="dropdown-item" href="javascript:void(0)">Competitii
+                                        viitoare</a>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a id="comments" class="nav-link" href="javascript:void(0)">Comentarii</a>
@@ -144,7 +154,7 @@
     <script type="module" src="app.js"></script>
     <script src="kendo/js/kendo.all.min.js"></script>
     <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
-
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 
 </body>
 

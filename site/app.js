@@ -3,6 +3,8 @@ import Auth from './js/auth.js';
 import BiographyView from "./js/biographyView.js";
 import homePageHtml from "./js/homePage.js";
 import CommentsView from "./js/commentsView.js";
+import EventsView from "./js/eventsView.js";
+import PalmaresView from "./js/palmaresView.js";
 
 
 $(document).ready(function () {
@@ -28,10 +30,22 @@ $(document).ready(function () {
 
     router.route("/events", () => {
         $("#navb a").removeClass("active");
-        $("#events").addClass("active");
-        sectionArea.html("<h1>Events view</h1>");
+        $("#navbarDropdown").addClass("active");
+        let eventsView = new EventsView();
+        eventsView.load(sectionArea);
     });
-
+    router.route("/pastevents", () => {
+        $("#navb a").removeClass("active");
+        $("#navbarDropdown").addClass("active");
+        let eventsView = new EventsView();
+        eventsView.loadPast(sectionArea);
+    });
+    router.route("/palmares", () => {
+        $("#navb a").removeClass("active");
+        $("#careerStatistics").addClass("active");
+        let palmaresView = new PalmaresView();
+        palmaresView.loadPalmares(sectionArea);
+    });
     router.route("/comments", () => {
         $("#navb a").removeClass("active");
         $("#comments").addClass("active");
@@ -48,13 +62,15 @@ $(document).ready(function () {
         router.navigate("/biography");
     })
     $("#careerStatistics").on('click', function () {
-        router.navigate("/careerStatistics");
+        router.navigate("/palmares");
 
     })
     $("#events").on('click', function () {
         router.navigate("/events");
     })
-
+    $("#pastEvents").on('click', function () {
+        router.navigate("/pastevents");
+    })
     $("#comments").on('click', function () {
         router.navigate("/comments");
     })

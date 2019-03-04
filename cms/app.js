@@ -6,12 +6,15 @@ import CommentsView from './js/commentsView.js';
 import CommentWidget from './js/commentWidget.js';
 import EventsView from './js/eventsView.js';
 import EventWidget from './js/eventWidget.js';
+import PalmaresView from './js/palmaresView.js';
+import PalmaresWidget from './js/palmaresWidget.js';
 
 
 $(document).ready(function () {
     var biographyView = new BiographyView();
     var commentsView = new CommentsView();
     var eventsView = new EventsView();
+    var palmaresView = new PalmaresView();
 
     router.route("/", function () {
         $("#main-container").empty();
@@ -33,10 +36,19 @@ $(document).ready(function () {
         BiographyWidget.editBiography($("#main-container"), id);
     });
 
-    router.route("/careerStatistics", () => {
+    router.route("/palmares", () => {
         $("#v-pills-tab a").removeClass("active");
         $("#career-tab").addClass("active");
-        $("#main-container").html("<h1>CareerStatistics view</h1>");
+        palmaresView.load($("#main-container"));
+    });
+    router.route("/palmares/add", () => {
+        PalmaresWidget.showUpdateForm($("#main-container"));
+    });
+    router.route("/palmares/delete/:id", (id) => {
+        PalmaresWidget.delete(id);
+    });
+    router.route("/palmares/:id", function (id) {
+        PalmaresWidget.edit($("#main-container"), id);
     });
 
     router.route("/events", () => {
@@ -80,16 +92,13 @@ $(document).ready(function () {
         router.navigate("/biography");
     })
     $("#career-tab").on('click', function () {
-        router.navigate("/careerStatistics");
-
+        router.navigate("/palmares");
     })
     $("#events-tab").on('click', function () {
         router.navigate("/events");
-
     })
     $("#users-tab").on('click', function () {
         router.navigate("/comments");
-
     })
     $("#logo").on('click', function () {
         router.navigate("/");
